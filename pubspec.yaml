@@ -31,9 +31,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  screenshots:
+    - screenshot2.png
 
-screenshots:
-  - screenshot2.png
-
-assets:
-  - assets/styles/
+  assets:
+    - assets/styles/
