@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cirilica/cirilica.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/foundation.dart';
@@ -255,7 +256,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.place, size: 36, color: Colors.red),
+                Icon(Icons.place, size: 40, color: Color(0xFF548235)),
                 SizedBox(height: 42),
               ],
             ),
@@ -280,7 +281,8 @@ class GoogleMapPlacePicker extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 AnimatedPin(
-                    child: Icon(Icons.place, size: 36, color: Colors.red)),
+                    child:
+                        Icon(Icons.place, size: 40, color: Color(0xFF548235))),
                 SizedBox(height: 42),
               ],
             ),
@@ -362,7 +364,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            result.formattedAddress!,
+            ConvertTo().latinica(source: result.formattedAddress!) ?? '',
             style: TextStyle(fontSize: 18),
             textAlign: TextAlign.center,
           ),
@@ -378,7 +380,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
               onPlacePicked!(result);
             },
             child: Text(
-              "Select here",
+              "Izaberi",
               style: TextStyle(fontSize: 16),
             ),
           ),
