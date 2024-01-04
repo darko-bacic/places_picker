@@ -31,8 +31,5 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  screenshots:
-    - screenshot2.png
-
   assets:
-    - assets/styles/
+    - packages/places_picker/assets/dark_map_style.json
