@@ -288,7 +288,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
               width: 5,
               height: 5,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: Colors.white,
                 shape: BoxShape.circle,
               ),
             ),
@@ -313,7 +313,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
               width: 5,
               height: 5,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: Colors.white,
                 shape: BoxShape.circle,
               ),
             ),
@@ -353,7 +353,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
   Widget _defaultPlaceWidgetBuilder(
       BuildContext context, PickResult? data, SearchingState state) {
     return FloatingCard(
-      bottomPosition: MediaQuery.of(context).size.height * 0.05,
+      bottomPosition: 25,
       leftPosition: MediaQuery.of(context).size.width * 0.025,
       rightPosition: MediaQuery.of(context).size.width * 0.025,
       width: MediaQuery.of(context).size.width * 0.9,
