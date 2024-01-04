@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:cirilica/cirilica.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/services.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:places_picker/places_picker.dart';
@@ -169,6 +171,8 @@ class GoogleMapPlacePicker extends StatelessWidget {
               provider.mapController = controller;
               provider.setCameraPosition(null);
               provider.pinState = PinState.Idle;
+              // _myMapController = c;
+              changeMapMode(provider.mapController!);
 
               // When select initialPosition set to true.
               if (selectInitialPosition!) {
@@ -227,6 +231,24 @@ class GoogleMapPlacePicker extends StatelessWidget {
                   () => EagerGestureRecognizer())),
           );
         });
+  }
+
+  //this is the function to load custom map style json
+  void changeMapMode(GoogleMapController mapController) {
+    getJsonFile("assets/styles/dark_map_style.json")
+        .then((value) => setMapStyle(value, mapController));
+  }
+
+  //helper function
+  void setMapStyle(String mapStyle, GoogleMapController mapController) {
+    mapController.setMapStyle(mapStyle);
+  }
+
+  //helper function
+  Future<String> getJsonFile(String path) async {
+    ByteData byte = await rootBundle.load(path);
+    var list = byte.buffer.asUint8List(byte.offsetInBytes, byte.lengthInBytes);
+    return utf8.decode(list);
   }
 
   Widget _buildPin() {
