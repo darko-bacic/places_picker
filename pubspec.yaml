@@ -34,3 +34,6 @@ flutter:
 
 screenshots:
   - screenshot2.png
+
+assets:
+  - assets/styles/
