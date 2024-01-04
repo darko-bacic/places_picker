@@ -235,7 +235,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
 
   //this is the function to load custom map style json
   void changeMapMode(GoogleMapController mapController) {
-    getJsonFile("assets/styles/dark_map_style.json")
+    getJsonFile("packages/places_picker/assets/dark_map_style.json")
         .then((value) => setMapStyle(value, mapController));
   }
 
