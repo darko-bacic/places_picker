@@ -278,7 +278,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.place, size: 40, color: Colors.blue),
+                Icon(Icons.place, size: 40, color: Colors.red),
                 SizedBox(height: 42),
               ],
             ),
@@ -303,7 +303,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 AnimatedPin(
-                    child: Icon(Icons.place, size: 40, color: Colors.blue)),
+                    child: Icon(Icons.place, size: 40, color: Colors.red)),
                 SizedBox(height: 42),
               ],
             ),
@@ -373,7 +373,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
         child: SizedBox(
           width: 24,
           height: 24,
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: Color(0xFF548235)),
         ),
       ),
     );

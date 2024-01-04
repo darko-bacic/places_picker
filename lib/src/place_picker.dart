@@ -255,7 +255,7 @@ class _PlacePickerState extends State<PlacePicker> {
               )
             ]);
           } else {
-            children.add(CircularProgressIndicator());
+            children.add(CircularProgressIndicator(color: Color(0xFF548235)));
           }
 
           return Scaffold(
@@ -280,6 +280,7 @@ class _PlacePickerState extends State<PlacePicker> {
                 onPressed: () => Navigator.maybePop(context),
                 icon: Icon(
                   Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
+                  color: Colors.white,
                 ),
                 padding: EdgeInsets.zero)
             : SizedBox(width: 15),
@@ -373,7 +374,8 @@ class _PlacePickerState extends State<PlacePicker> {
               .updateCurrentLocation(widget.forceAndroidLocationManager),
           builder: (context, snap) {
             if (snap.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                  child: CircularProgressIndicator(color: Color(0xFF548235)));
             } else {
               if (provider!.currentPosition == null) {
                 return _buildMap(widget.initialPosition);
@@ -388,7 +390,8 @@ class _PlacePickerState extends State<PlacePicker> {
         future: Future.delayed(Duration(milliseconds: 1)),
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: CircularProgressIndicator(color: Color(0xFF548235)));
           } else {
             return _buildMap(widget.initialPosition);
           }

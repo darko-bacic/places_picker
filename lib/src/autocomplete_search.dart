@@ -247,7 +247,8 @@ class AutoCompleteSearchState extends State<AutoCompleteSearch> {
           SizedBox(
             height: 24,
             width: 24,
-            child: CircularProgressIndicator(strokeWidth: 3),
+            child: CircularProgressIndicator(
+                strokeWidth: 3, color: Color(0xFF548235)),
           ),
           SizedBox(width: 24),
           Expanded(
@@ -282,7 +283,8 @@ class AutoCompleteSearchState extends State<AutoCompleteSearch> {
 
     if (searchTerm.isEmpty) return;
 
-    final PlacesAutocompleteResponse response = await provider.places.autocomplete(
+    final PlacesAutocompleteResponse response =
+        await provider.places.autocomplete(
       searchTerm,
       sessionToken: widget.sessionToken,
       location: provider.currentPosition == null
@@ -299,7 +301,8 @@ class AutoCompleteSearchState extends State<AutoCompleteSearch> {
       region: widget.region,
     );
 
-    if (response.errorMessage?.isNotEmpty == true || response.status == "REQUEST_DENIED") {
+    if (response.errorMessage?.isNotEmpty == true ||
+        response.status == "REQUEST_DENIED") {
       if (widget.onSearchFailed != null) {
         widget.onSearchFailed!(response.status);
       }
