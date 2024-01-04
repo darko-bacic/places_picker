@@ -256,7 +256,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.place, size: 40, color: Color(0xFF548235)),
+                Icon(Icons.place, size: 40, color: Colors.red),
                 SizedBox(height: 42),
               ],
             ),
@@ -281,8 +281,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 AnimatedPin(
-                    child:
-                        Icon(Icons.place, size: 40, color: Color(0xFF548235))),
+                    child: Icon(Icons.place, size: 40, color: Colors.red)),
                 SizedBox(height: 42),
               ],
             ),
@@ -371,9 +370,10 @@ class GoogleMapPlacePicker extends StatelessWidget {
           SizedBox(height: 10),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              backgroundColor: Color(0xFF548235),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4.0),
+                borderRadius: BorderRadius.circular(5),
               ),
             ),
             onPressed: () {
@@ -381,7 +381,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
             },
             child: Text(
               "Izaberi",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
         ],
