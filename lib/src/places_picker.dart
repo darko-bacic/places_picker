@@ -452,8 +452,10 @@ class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
 
   Future<void> _checkLocationPermission() async {
     final permission = await Geolocator.checkPermission();
+    final isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled();
     setState(() {
-      _hasLocationPermission = permission == LocationPermission.always || permission == LocationPermission.whileInUse;
+      _hasLocationPermission = isLocationServiceEnabled &&
+          (permission == LocationPermission.always || permission == LocationPermission.whileInUse);
     });
   }
 }

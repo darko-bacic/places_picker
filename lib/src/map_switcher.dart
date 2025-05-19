@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as google;
 import 'package:huawei_map/huawei_map.dart' as huawei;
 
@@ -35,8 +34,10 @@ class MapSwitcher extends StatelessWidget {
         ),
         myLocationEnabled: hasLocationPermission,
         myLocationButtonEnabled: false,
+        logoPosition: huawei.HuaweiMap.UPPER_LEFT,
+        logoPadding: EdgeInsets.only(top: 10, left: 10),
         compassEnabled: false,
-        mapToolbarEnabled: false,
+        trafficEnabled: false,
         mapType: _convertMapType(mapType),
         onMapCreated: (huawei.HuaweiMapController controller) {
           // TODO: Implement Huawei map controller handling
