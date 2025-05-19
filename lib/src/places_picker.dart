@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:places_picker/places_picker.dart';
@@ -88,10 +89,12 @@ class GoogleMapPlacePicker extends StatefulWidget {
 
 class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
   bool isHuaweiDevice = false;
+  bool _hasLocationPermission = false;
 
   @override
   void initState() {
     super.initState();
+    _checkLocationPermission();
     DeviceDetector.isHuaweiDevice().then((result) {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         if (mounted) {
@@ -181,6 +184,7 @@ class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
             initialTarget: widget.initialTarget,
             mapType: data,
             isHuaweiDevice: isHuaweiDevice,
+            hasLocationPermission: _hasLocationPermission,
             onMapCreated: (GoogleMapController controller) {
               provider.mapController = controller;
               provider.setCameraPosition(null);
@@ -444,5 +448,12 @@ class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
         ],
       ),
     );
+  }
+
+  Future<void> _checkLocationPermission() async {
+    final permission = await Geolocator.checkPermission();
+    setState(() {
+      _hasLocationPermission = permission == LocationPermission.always || permission == LocationPermission.whileInUse;
+    });
   }
 }

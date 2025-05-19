@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as google;
 import 'package:huawei_map/huawei_map.dart' as huawei;
 
@@ -10,6 +11,7 @@ class MapSwitcher extends StatelessWidget {
   final Function() onCameraIdle;
   final bool isHuaweiDevice;
   final google.MapType mapType;
+  final bool hasLocationPermission;
 
   const MapSwitcher({
     Key? key,
@@ -20,6 +22,7 @@ class MapSwitcher extends StatelessWidget {
     required this.onCameraIdle,
     required this.isHuaweiDevice,
     required this.mapType,
+    required this.hasLocationPermission,
   }) : super(key: key);
 
   @override
@@ -30,7 +33,7 @@ class MapSwitcher extends StatelessWidget {
           target: huawei.LatLng(initialTarget.latitude, initialTarget.longitude),
           zoom: 15,
         ),
-        myLocationEnabled: true,
+        myLocationEnabled: hasLocationPermission,
         myLocationButtonEnabled: false,
         compassEnabled: false,
         mapToolbarEnabled: false,
@@ -61,7 +64,7 @@ class MapSwitcher extends StatelessWidget {
       compassEnabled: false,
       mapToolbarEnabled: false,
       initialCameraPosition: google.CameraPosition(target: initialTarget, zoom: 15),
-      myLocationEnabled: true,
+      myLocationEnabled: hasLocationPermission,
       onMapCreated: onMapCreated,
       onCameraIdle: onCameraIdle,
       onCameraMoveStarted: onCameraMoveStarted,
