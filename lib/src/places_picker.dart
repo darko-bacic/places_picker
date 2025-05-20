@@ -96,6 +96,14 @@ class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
     super.initState();
     _checkLocationPermission();
     DeviceDetector.isHuaweiDevice().then((result) {
+      try {
+        if (result) {
+          hw.HuaweiMapInitializer.initializeMap();
+        }
+      } catch (e) {
+        print(e);
+      }
+
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         if (mounted) {
           setState(() {
@@ -104,12 +112,6 @@ class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
         }
       });
     });
-
-    try {
-      hw.HuaweiMapInitializer.initializeMap();
-    } catch (e) {
-      print(e);
-    }
   }
 
   _searchByCameraLocation(PlaceProvider provider) async {
