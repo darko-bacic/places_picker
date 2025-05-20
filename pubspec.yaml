@@ -1,6 +1,6 @@
 name: places_picker
 description: A Flutter plugin which provides 'Picking Place' using Google Maps widget.
-version: 2.1.5
+version: 2.1.6
 homepage: https://github.com/drexsoftorg/places_picker
 issue_tracker: https://github.com/drexsoftorg/places_picker/issues
 repository: https://github.com/drexsoftorg/places_picker
@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  google_maps_flutter: 2.12.1
+  google_maps_flutter: 2.12.2
   huawei_map: ^6.11.2+304
   geolocator: 13.0.1
   permission_handler: 12.0.0+1
