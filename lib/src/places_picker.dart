@@ -98,7 +98,11 @@ class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
     DeviceDetector.isHuaweiDevice().then((result) {
       try {
         if (result) {
-          hw.HuaweiMapInitializer.initializeMap();
+          try {
+            hw.HuaweiMapInitializer.initializeMap();
+          } catch (e) {
+            print("Huawei Map Initialization Error: " + e.toString());
+          }
         }
       } catch (e) {
         print(e);
