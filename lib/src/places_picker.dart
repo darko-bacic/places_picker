@@ -457,11 +457,18 @@ class _GoogleMapPlacePickerState extends State<GoogleMapPlacePicker> {
   }
 
   Future<void> _checkLocationPermission() async {
-    final permission = await Geolocator.checkPermission();
-    final isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled();
-    setState(() {
-      _hasLocationPermission = isLocationServiceEnabled &&
-          (permission == LocationPermission.always || permission == LocationPermission.whileInUse);
-    });
+    try {
+      final permission = await Geolocator.checkPermission();
+      final isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (mounted) {
+        setState(() {
+          _hasLocationPermission = isLocationServiceEnabled &&
+              (permission == LocationPermission.always || permission == LocationPermission.whileInUse);
+        });
+      }
+    } catch (e, st) {
+      print("Error checking location permission: " + e.toString());
+      print("Stack trace: " + st.toString());
+    }
   }
 }
